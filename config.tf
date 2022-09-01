@@ -8,9 +8,9 @@ terraform {
 }
 
 provider "yandex" {
-  token     = "y0_AgAAAABjv7fsAATuwQAAAADNd1PsLO8otNcKSu-8ypOLZddyTkPTeQs"
-  cloud_id  = "b1g9q49j8o9p8fdicr7g"
-  folder_id = "b1gphfspgsih2mk1gt8o"
+  token     = "y0_AgAEA7qkANiNAATuwQAAAADNtSBtx9aZEU84Tw-y5Jnz-oU5pCicSlc"
+  cloud_id  = "b1gvm5ubeaal0e3scaee"
+  folder_id = "b1gej38jqapb462ur42b"
   zone      = "ru-central1-a"
 }
 
@@ -31,13 +31,13 @@ resource "yandex_compute_instance" "vm-1" {
     }
   }
 
-  network_interface {
+network_interface {
     subnet_id = yandex_vpc_subnet.subnet-1.id
     nat       = true
   }
 
   metadata = {
-    user-data = "${file("/home/vm1/terraform1/meta_build.txt")}"
+    user-data = "${file("/home/vm1/terraform/meta_build.txt")}"
   }
 
 }
@@ -62,7 +62,7 @@ resource "yandex_compute_instance" "vm-2" {
   }
 
   metadata = {
-    user-data = "${file("/home/vm1/terraform1/meta_prod.txt")}"
+    user-data = "${file("/home/vm1/terraform/meta_prod.txt")}"
   }
 }
 
